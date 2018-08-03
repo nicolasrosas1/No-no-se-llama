@@ -1,0 +1,14 @@
+<% @page_title = "Listado materiales" %>
+<table>
+  <tr>
+    <th>Nombre</th>
+    <th>Precio</th>
+    <th>Stock</th>
+  </tr>
+  <% @lista_materiales.each do |m| %>
+  <tr>
+    <th><%= m.nombre %></th>
+    <th><%= m.precio %></th>
+    <th><%= m.stock %></th>
+  </tr>
+  <% end %>

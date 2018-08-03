@@ -1,0 +1,10 @@
+<% @page_title = "Registrar material" %>
+<div class="Sign_Form">
+  <h1>Registra material</h1>
+  <%= form_for(:material, :url => {:controller => 'materials', :action => 'create'}) do |f| %>
+    <p> nombre:</br> <%= f.text_field :nombre%> </p>
+    <p> precio:</br> <%= f.number_field :precio%> </p>
+    <p> stock:</br> <%= f. number_field :stock%></p>
+    <%= f.submit :Signup %>
+  <% end %>
+</div>
