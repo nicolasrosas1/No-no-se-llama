@@ -2,7 +2,7 @@
 
 #### Tecnologias
 
-El proyecto es desarrollado utilizando Ruby on Rails, con una base de datos de MySQL
+El proyecto es desarrollado utilizando Ruby on Rails, con una base de datos de MySQL. Desarrollado en Ubuntu.
 
 #### Ejecucion de aplicacion web
 
