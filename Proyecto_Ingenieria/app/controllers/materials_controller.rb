@@ -16,7 +16,7 @@ class MaterialsController < ApplicationController
   end
 
   def material_params
-    params.require(:material).permit(:nombre, :precio, :stock)
+    params.require(:material).permit(:nombre, :precio, :stock, :bodega)
   end
 
   def list_materials
