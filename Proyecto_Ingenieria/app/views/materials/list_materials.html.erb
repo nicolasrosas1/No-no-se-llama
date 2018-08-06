@@ -1,14 +1,14 @@
 <% @page_title = "Listado materiales" %>
-<table>
+<table class="table table-sm table-dark">
   <tr>
-    <th>Nombre</th>
-    <th>Precio</th>
-    <th>Stock</th>
+    <th style = "background-color:#87A0F5">Nombre</th>
+    <th style = "background-color: #87A0F5">Stock</th>
+    <th style = "background-color: #87A0F5">Bodega</th>
   </tr>
   <% @lista_materiales.each do |m| %>
   <tr>
     <th><%= m.nombre %></th>
-    <th><%= m.precio %></th>
     <th><%= m.stock %></th>
+    <th><%= m.bodega %></th>
   </tr>
   <% end %>
