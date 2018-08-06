@@ -2,10 +2,15 @@
 <div class="Sign_Form">
   <h1>Sign Up</h1>
   <%= form_for(:user, :url => {:controller => 'users', :action => 'create'}) do |f| %>
-    <p> nombre:</br> <%= f.text_field :nombre%> </p>
-    <p> correo:</br> <%= f.text_field :correo%> </p>
-    <p> Password:</br> <%= f.password_field :pass%></p>
-    <p> Password Confirmation:</br> <%= f.password_field :pass_confirmation%> </p>
+    <p> Nombre:</br> <%= f.text_field :nombre%> </p>
+    <p> Correo:</br> <%= f.text_field :correo%> </p>
+    <p> Cargo:</br> <%= f.select :cargo, options_for_select([
+  ["Cargos", ""],
+  "Bodeguero",
+  "Bodeguero central",
+  "Personal de obra"]) %>
+    <p> Contrasena:</br> <%= f.password_field :pass%></p>
+    <p> Confirmar contrasena:</br> <%= f.password_field :pass_confirmation%> </p>
     <%= f.submit :Signup %>
   <% end %>
   <% if @user.errors.any? %>

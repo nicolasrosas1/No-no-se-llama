@@ -1,0 +1,10 @@
+<div class="container">
+  <%= session[:cargo]%>
+  <p>hola
+  <%if @current_user.cargo == 'personal de obra' %>
+    <p>Soy personal de obra
+  <%end%>
+  <%if @current_user.cargo == 'bodeguero' %>
+    <p>Soy bodeguero
+  <%end%>
+</div>

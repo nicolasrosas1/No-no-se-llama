@@ -1,4 +1,6 @@
 class MaterialsController < ApplicationController
+  include SessionsHelper
+  before_action :logged_in_user
   def new
     @material = Material.new
   end

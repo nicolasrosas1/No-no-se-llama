@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+
   include SessionsHelper
   def new
   end
@@ -7,7 +8,7 @@ class SessionsController < ApplicationController
     user = User.find_by(nombre: params[:session][:usuario].downcase)
     if user && user.authenticate(params[:session][:usuario],params[:session][:password])
       log_in(user)
-      redirect_to user
+      redirect_to '/home'
     else
       flash[:danger] = 'Invalid email/password combination'
       render 'new'

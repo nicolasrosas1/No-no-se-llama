@@ -1,24 +1,14 @@
-# README
+# No, no se llama
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+#### Tecnologias
 
-Things you may want to cover:
+El proyecto es desarrollado utilizando Ruby on Rails, con una base de datos de MySQL
 
-* Ruby version
+#### Ejecucion de aplicacion web
 
-* System dependencies
+Para ejecutar correctamente la aplicacion web, se deben ejecutar los siguientes comandos:
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1. bundle install
+2. rake db:create
+3. rake db:migrate
+4. rails s
