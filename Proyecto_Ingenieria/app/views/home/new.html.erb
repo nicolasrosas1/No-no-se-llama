@@ -1,6 +1,6 @@
 <div class="container">
   <%= session[:cargo]%>
-  <p>Bienvenido!
+  <p>Bienvenido! <%=session[:user_id]%>
   <%if @current_user.cargo == 'Personal de obra' %>
     <%= link_to "Mandar solicitud", "" %>
   <%end%>
@@ -8,4 +8,7 @@
     <%= link_to "Registrar nuevo material", "/new_material" %>
     <%= link_to "Ver materiales", "/list_materials" %>
   <%end%>
+  <p>
+  <%=iniciar%>
+  <p>
 </div>
