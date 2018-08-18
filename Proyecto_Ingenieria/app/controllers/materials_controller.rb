@@ -1,5 +1,7 @@
 class MaterialsController < ApplicationController
+  require "json"
   include SessionsHelper
+  include MaterialsHelper
   before_action :logged_in_user
   def new
     @material = Material.new
@@ -19,10 +21,6 @@ class MaterialsController < ApplicationController
 
   def material_params
     params.require(:material).permit(:nombre, :precio, :stock, :bodega)
-  end
-
-  def list_materials
-    @lista_materiales = Material.all
   end
 
 end
