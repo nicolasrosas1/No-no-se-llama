@@ -11,5 +11,8 @@ Rails.application.routes.draw do
   get '/list_materials', to:'materials#list_materials'
   resources :materials
 
+  get '/new_order', to:'orders#new'
+  resources :orders
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

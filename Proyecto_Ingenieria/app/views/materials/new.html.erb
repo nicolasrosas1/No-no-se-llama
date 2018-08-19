@@ -2,7 +2,7 @@
 <div class="Sign_Form" style= "margin: auto; width: 50%; padding: 10px; text-align: center">
   <h1>Registra material</h1>
   <%= form_for(:material, :url => {:controller => 'materials', :action => 'create'}) do |f| %>
-    <p> Nombre:</br> <%= f.text_field :nombre%> </p
+    <p> Nombre:</br> <%= f.text_field :nombre%> </p>
     <p> Bodega:</br> <%= f.text_field :bodega%> </p>
     <p> Precio:</br> <%= f.number_field :precio%> </p>
     <p> Stock:</br> <%= f. number_field :stock%></p>

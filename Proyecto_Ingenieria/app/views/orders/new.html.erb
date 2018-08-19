@@ -1,0 +1,9 @@
+<% @page_title = "Solicitud de materiales" %>
+<div  style= "margin: auto; width: 50%; padding: 10px; text-align: center">
+  <h1>Registrar solicitud de materiales</h1>
+  <%= form_for(:order, :url => {:controller => 'orders', :action => 'create'}) do |f| %>
+    <p> Fecha de entrega:</br> <%= f.date_field :fecha_entrega%> </p>
+    <p> Direccion entrega:</br> <%= f.text_field :direccion%> </p>
+    <%= f.submit :Registrar %>
+  <% end %>
+</div>
