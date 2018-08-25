@@ -2,7 +2,11 @@ module SessionsHelper
 
   def log_in(user)
     session[:user_id] = user.id
+    session[:nombre] = user.nombre
+    session[:apellido] = user.apellido
     session[:cargo] = user.cargo
+    session[:correo] = user.correo
+    session[:pass] = user.pass
   end
 
   def current_user

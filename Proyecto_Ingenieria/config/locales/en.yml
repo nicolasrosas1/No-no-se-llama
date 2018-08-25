@@ -30,4 +30,19 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            nombre:
+              blank: no puede ser vacio
+              taken: se encuentra ocupado
+              too_short: es muy corto (minimo 3 caracteres)
+            correo:
+              blank: no puede ser vacio
+              invalid: es invalido
+              taken: se encuentra ocupado
+            pass:
+              too_short: es muy corta (minimo 6 caracteres)
   hello: "Hello world"

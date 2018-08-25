@@ -1,8 +1,9 @@
 <% @page_title = "UserAuth | Signup" %>
 <div class="Sign_Form">
-  <h1>Sign Up</h1>
+  <h1>Registro de usuarios</h1>
   <%= form_for(:user, :url => {:controller => 'users', :action => 'create'}) do |f| %>
     <p> Nombre:</br> <%= f.text_field :nombre%> </p>
+    <p> Apellido:</br> <%= f.text_field :apellido%> </p>
     <p> Correo:</br> <%= f.text_field :correo%> </p>
     <p> Cargo:</br> <%= f.select :cargo, options_for_select([
   ["Cargos", ""],

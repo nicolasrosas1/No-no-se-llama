@@ -1,7 +1,9 @@
 class User < ActiveRecord::Base
   EMAIL_REGEX = /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
-  validates :nombre, :presence => true, :uniqueness => true, :length => { :in => 3..20 }
-  validates :correo, :presence => true, :uniqueness => true, :format => EMAIL_REGEX
+  validates :nombre, presence: true, length:  { :in => 3..20 }
+  validates :apellido, presence: true, length:  { :in => 3..20 }
+  validates :cargo, presence: true
+  validates :correo, presence: true, uniqueness: true, format: EMAIL_REGEX
   validates :pass, :confirmation => true #password_confirmation attr
   validates_length_of :pass, :in => 6..20, :on => :create
   before_save :encrypt_password
@@ -14,8 +16,8 @@ class User < ActiveRecord::Base
     end
   end
 
-  def authenticate(usuario='', pass='')
-    user = User.find_by(nombre: usuario)
+  def authenticate(correo='', pass='')
+    user = User.find_by(correo: correo)
     if user && user.match_password(pass)
       return user
     else
