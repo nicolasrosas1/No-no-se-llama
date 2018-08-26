@@ -10,13 +10,17 @@ class MaterialsController < ApplicationController
   def create
     @material = Material.new(material_params)
     if @material.save
-      flash[:notice] = "Material registrado"
+      flash[:success] = "Material registrado"
       flash[:color]= "valid"
+      @lista_materiales = Material.all
+      @prev_view = "new_material"   #esto acabo de arreglar
+      render "list_materials"
     else
-      flash[:notice] = "Formulario invalido"
+      flash[:danger] = "Formulario invalido"
       flash[:color]= "invalid"
+      render "new"
     end
-    render "new"
+
   end
 
   def material_params

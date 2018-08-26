@@ -12,3 +12,7 @@
     <th><%= m.bodega %></th>
   </tr>
   <% end %>
+
+  <% if @prev_view == "new_material" %>
+    <%= link_to "Volver", "/new_material"%>
+  <% end %>
