@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_26_214001) do
+ActiveRecord::Schema.define(version: 2018_08_26_222304) do
 
   create_table "materials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nombre"
@@ -19,6 +19,15 @@ ActiveRecord::Schema.define(version: 2018_08_26_214001) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "bodega"
+  end
+
+  create_table "materials_orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "order_id"
+    t.bigint "material_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["material_id"], name: "index_materials_orders_on_material_id"
+    t.index ["order_id"], name: "index_materials_orders_on_order_id"
   end
 
   create_table "materials_warehouses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -36,16 +45,6 @@ ActiveRecord::Schema.define(version: 2018_08_26_214001) do
     t.string "estado"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "orders_materials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "orders_id"
-    t.bigint "materials_id"
-    t.integer "cant_material"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["materials_id"], name: "index_orders_materials_on_materials_id"
-    t.index ["orders_id"], name: "index_orders_materials_on_orders_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -66,6 +65,8 @@ ActiveRecord::Schema.define(version: 2018_08_26_214001) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "materials_orders", "materials"
+  add_foreign_key "materials_orders", "orders"
   add_foreign_key "materials_warehouses", "materials"
   add_foreign_key "materials_warehouses", "warehouses"
 end
