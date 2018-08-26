@@ -26,8 +26,7 @@ class OrdersController < ApplicationController
     if @order.save
       redirect_to "/home"
     else
-      flash[:notice] = "Solicitud invalida"
-      flash[:color]= "invalid"
+      flash[:danger] = "Solicitud invalida"
       render "new"
     end
   end
