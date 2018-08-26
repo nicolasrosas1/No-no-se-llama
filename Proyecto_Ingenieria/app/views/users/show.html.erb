@@ -18,11 +18,7 @@
                              </tr>
                              <tr>
                                  <td>Cargo:</td>
-                                 <td><%= f.select :cargo, options_for_select([
-                                   ["Cargos", @user.cargo],
-                                   "Bodeguero",
-                                   "Bodeguero central",
-                                   "Personal de obra"]) %></td>
+                                 <td><%= @user.cargo %></td>
                              </tr>
                          </tbody>
                      </table>

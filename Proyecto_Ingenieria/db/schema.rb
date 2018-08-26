@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_25_204147) do
+ActiveRecord::Schema.define(version: 2018_08_26_193017) do
 
   create_table "materials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nombre"
@@ -19,6 +19,15 @@ ActiveRecord::Schema.define(version: 2018_08_25_204147) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "bodega"
+  end
+
+  create_table "materials_warehouses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "warehouse_id"
+    t.bigint "material_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["material_id"], name: "index_materials_warehouses_on_material_id"
+    t.index ["warehouse_id"], name: "index_materials_warehouses_on_warehouse_id"
   end
 
   create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -50,4 +59,13 @@ ActiveRecord::Schema.define(version: 2018_08_25_204147) do
     t.string "apellido"
   end
 
+  create_table "warehouses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "nombre"
+    t.string "direccion"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "materials_warehouses", "materials"
+  add_foreign_key "materials_warehouses", "warehouses"
 end
