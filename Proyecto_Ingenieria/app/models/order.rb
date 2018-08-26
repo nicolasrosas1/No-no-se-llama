@@ -1,4 +1,3 @@
 class Order < ApplicationRecord
-  has_many :orders_materials
-  has_many :materials, :through => :orders_materials
+  has_and_belongs_to_many :materials
 end
