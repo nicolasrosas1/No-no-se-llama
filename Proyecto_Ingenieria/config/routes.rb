@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :materials
 
   get '/new_order', to:'orders#new'
+  post '/add_material', to: 'orders#add_material'
   resources :orders
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

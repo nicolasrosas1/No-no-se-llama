@@ -38,16 +38,6 @@ ActiveRecord::Schema.define(version: 2018_08_26_214001) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "orders_materials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "orders_id"
-    t.bigint "materials_id"
-    t.integer "cant_material"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["materials_id"], name: "index_orders_materials_on_materials_id"
-    t.index ["orders_id"], name: "index_orders_materials_on_orders_id"
-  end
-
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nombre"
     t.string "correo"
