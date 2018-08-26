@@ -10,7 +10,8 @@ class SessionsController < ApplicationController
       log_in(user)
       redirect_to '/home'
     else
-
+      flash[:danger] = "Nombre de usuario o contrasena incorrecta"
+      render "new"
     end
   end
 

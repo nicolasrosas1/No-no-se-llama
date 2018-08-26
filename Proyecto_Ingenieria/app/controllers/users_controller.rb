@@ -24,13 +24,11 @@ class UsersController < ApplicationController
   def update
   @user = User.find_by(id: params[:id])
     if @user.update_attributes(user_params)
+      flash[:success] = "Cambios correctos"
       redirect_to @user
-
     else
-      render(
-        html: "<script>alert('No users!')</script>".html_safe,
-        layout: 'application'
-      )
+      flash[:danger] = "Ha ocurrido un error"
+      render "new"
     end
   end
 
@@ -39,6 +37,6 @@ class UsersController < ApplicationController
   end
 
   def update_params
-    params.require(:user).permit(:apellido, :correo, :cargo, :nombre)
+    params.require(:user).permit(:apellido, :cargo, :nombre)
   end
 end

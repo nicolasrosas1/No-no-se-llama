@@ -2,7 +2,7 @@
 
   <p>Bienvenido! <%=session[:nombre]%>
   <%if @current_user.cargo == 'Personal de obra' %>
-    <%= link_to "Mandar solicitud", "" %>
+    <%= link_to "Mandar solicitud", "/new_order" %>
   <%end%>
   <%if @current_user.cargo == 'Bodeguero' %>
     <p><%= link_to "Registrar nuevo material", "/new_material" %>

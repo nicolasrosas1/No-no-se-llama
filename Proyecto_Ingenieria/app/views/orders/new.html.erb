@@ -4,8 +4,8 @@
   <%= form_for(:order, :url => {:controller => 'orders', :action => 'create'}) do |f| %>
     <p> Fecha de entrega:</br> <%= f.date_field :fecha_entrega%> </p>
     <p> Direccion entrega:</br> <%= f.text_field :direccion%> </p>
-    <%= f.collection_select(:materials, @lista_materiales, :id, :nombre, {include_blank: true}, {multiple: true}) %>
-    <%= f.submit :Registrar %>
+    <p> Materiales:</br><%= f.collection_select(:materials, @lista_materiales, :id, :nombre, {include_blank: true}, {multiple: true}) %>
+    <p><%= f.submit :Registrar %>
 
   <% end %>
 </div>
