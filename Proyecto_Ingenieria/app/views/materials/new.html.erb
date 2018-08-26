@@ -8,4 +8,11 @@
     <p> Stock:</br> <%= f. number_field :stock%></p>
     <%= f.submit :Registrar %>
   <% end %>
+  <% if @material.errors.any? %>
+    <ul class="Signup_Errors">
+    <% for message_error in @material.errors.full_messages %>
+      <li>* <%= message_error %></li>
+    <% end %>
+    </ul>
+  <% end %>
 </div>

@@ -11,13 +11,10 @@ class MaterialsController < ApplicationController
     @material = Material.new(material_params)
     if @material.save
       flash[:success] = "Material registrado"
-      flash[:color]= "valid"
       @lista_materiales = Material.all
       @prev_view = "new_material"   #esto acabo de arreglar
       render "list_materials"
     else
-      flash[:danger] = "Formulario invalido"
-      flash[:color]= "invalid"
       render "new"
     end
 
