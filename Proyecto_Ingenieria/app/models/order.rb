@@ -1,4 +1,4 @@
 class Order < ApplicationRecord
-  has_and_belongs_to_many :materials
-
+  attr_accessor :materials
+  attr_accessor :cant
 end
