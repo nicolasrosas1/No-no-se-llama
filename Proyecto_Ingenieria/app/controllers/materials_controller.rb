@@ -12,6 +12,7 @@ class MaterialsController < ApplicationController
     if @material.save
       flash[:success] = "Material registrado"
       @lista_materiales = Material.all
+      @MW = MaterialsWarehouse.new(:warehouse_id => material_params["bodega"], :material_id => Material.last.id)
       @prev_view = "new_material"   #esto acabo de arreglar
       render "list_materials"
     else
