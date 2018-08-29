@@ -10,9 +10,12 @@ class WarehousesController < ApplicationController
     @warehouse = Warehouse.new(warehouse_params)
     if @warehouse.save
       flash[:success] = "Bodega registrada"
-      else
-        render "new"
-      end
+      @lista_bodegas = Warehouse.all
+      @prev_view = "new_warehouse"   #esto acabo de arreglar
+      render "list_warehouses"
+    else
+      render "new"
+    end
   end
 
   def show

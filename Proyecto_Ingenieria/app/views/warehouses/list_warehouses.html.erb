@@ -1,0 +1,16 @@
+<% @page_title = "Listado bodegas" %>
+<table class="table table-sm table-dark">
+  <tr>
+    <th style = "background-color:#87A0F5">Nombre</th>
+    <th style = "background-color: #87A0F5">Direccion</th>
+  </tr>
+  <% @lista_bodegas.each do |m| %>
+  <tr>
+    <th><%= m.nombre %></th>
+    <th><%= m.direccion %></th>
+  </tr>
+  <% end %>
+
+  <% if @prev_view == "new_warehouse" %>
+    <%= link_to "Volver", "/new_warehouse"%>
+  <% end %>

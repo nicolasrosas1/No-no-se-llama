@@ -6,4 +6,12 @@
     <p> Direccion de la bodega:</br> <%= f.text_field :direccion%> </p>
     <p><%= f.submit :Registrar %>
   <% end %>
+
+  <% if @warehouse.errors.any? %>
+    <ul class="Signup_Errors">
+    <% for message_error in @warehouse.errors.full_messages %>
+      <li>* <%= message_error %></li>
+    <% end %>
+    </ul>
+  <% end %>
 </div>
