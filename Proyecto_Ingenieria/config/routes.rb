@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   get '/new_order', to:'orders#new'
   get '/list_orders', to:'orders#list_orders'
+  get '/orders/:id', to: 'orders#show'
   post '/add_material', to: 'orders#add_material'
   resources :orders
 
