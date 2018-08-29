@@ -8,7 +8,7 @@
   ["Obra 1", "direccion 1"],
   ["Obra 2", "direccion 2"],
   ["Obra 3", "direccion 3"]]) %>
-    <p> Materiales:</br><%= f.collection_select(:materials, @lista_materiales, :id, :nombre, {include_blank: false}, {multiple: false}) %>
+    <p> Materiales:</br><%= f.collection_select(:materials, Material.all, :materials, :nombre, {include_blank: false}, {multiple: false}) %>
     <p><%= f.submit :Registrar %>
 
   <% end %>

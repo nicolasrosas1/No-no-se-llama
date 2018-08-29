@@ -5,19 +5,17 @@ class OrdersController < ApplicationController
   def new
     @order = Order.new()
     @lista_materiales = Material.all
-    puts @lista_materiales
     @orders_material = @order.materials.build
-    @@cantidad = 1
   end
 
   def create
     @material = Material.find_by(id: order_params["materials"])
     @order = Order.new(order_params)
-
+    puts @order.direccion
     @order.estado = "Pendiente"
 
     puts order_params
-    @order.materials << Material.find_by(order_params["materials"])
+    @order.materials << order_params["materials"]
 
     if @order.save
       redirect_to "/home"
@@ -28,7 +26,7 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:fecha_entrega, :direccion, :estado)
+    params.require(:order).permit(:fecha_entrega, :direccion, :estado, :materials)
   end
 
 end
