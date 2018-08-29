@@ -9,7 +9,7 @@
   <tr>
     <th><%= m.nombre %></th>
     <th><%= m.stock %></th>
-    <th><%= Warehouse.find_by(id: m.bodega)%></th>
+    <th><%= Warehouse.find_by(id: m.bodega).nombre%></th>
   </tr>
   <% end %>
 
