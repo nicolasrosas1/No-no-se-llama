@@ -1,14 +1,34 @@
 <div class="container">
-
-  <p>Bienvenido! <%=session[:nombre]%>
+  <div class= "row">
+    <p>Bienvenido! <%=session[:nombre]%>
+  </div>
   <%if @current_user.cargo == 'Personal de obra' %>
     <%= link_to "Mandar solicitud", "/new_order" %>
   <%end%>
   <%if @current_user.cargo == 'Bodeguero' %>
-    <p><%= link_to "Registrar nuevo material", "/new_material" %>
-    <p><%= link_to "Ver materiales", "/list_materials" %>
+    <%= link_to "Registrar nuevo material", "/new_material" %>
+         <%= image_tag "ordenes.png" %>
+    <%= link_to "Ver materiales", "/list_materials" %>
   <%end%>
-  <p>
 
-  <p>
+  <%if @current_user.cargo == 'Bodeguero central' %>
+
+  <div class="row">
+      <div class="col-sm-4">
+        <%= link_to "Ver órdenes", "/new_material" %>
+            <%= image_tag "ordenes.png", style: "height:auto;display:block;
+    margin-left:auto;margin-right:auto;width:90%;" %>
+      </div>
+      <div class="col-sm-4">
+        <%= link_to "Ver materiales", "/list_materials" %>
+            <%= image_tag "materiales.png", style: "height:auto;display:block;
+    margin-left:auto;margin-right:auto;width:90%;" %>
+      </div>
+    <div class="col-sm-4">
+        <%= link_to "Registrar materiales", "/list_materials"%>
+            <%= image_tag "nuevo_material.png", style: "height:auto;display:block;
+    margin-left:auto;margin-right:auto;width:90%;" %>
+  </div>
+    <%end%>
+
 </div>

@@ -1,0 +1,9 @@
+<% @page_title = "Nueva bodega" %>
+<div  style= "margin: auto; width: 50%; padding: 10px; text-align: center">
+  <h1>Registrar nueva bodega</h1>
+  <%= form_for(:warehouse, :url => {:controller => 'warehouses', :action => 'create'}) do |f| %>
+    <p> Nombre de la bodega:</br> <%= f.text_field :nombre%> </p>
+    <p> Direccion de la bodega:</br> <%= f.text_field :direccion%> </p>
+    <p><%= f.submit :Registrar %>
+  <% end %>
+</div>
