@@ -1,29 +1,23 @@
 class OrdersController < ApplicationController
+  require "json"
   include SessionsHelper
   before_action :logged_in_user
 
   def new
     @order = Order.new()
     @lista_materiales = Material.all
-    puts @lista_materiales
-    @orders_material = @order.materials.build
   end
 
   def create
     @order = Order.new(order_params)
     @order.estado = "Pendiente"
-
-
-    puts order_params
-    @order.materials << order_params["materials"]
-    # order_params["materials"].each do |material|
-    #   puts material
-    #   if !material.empty?
-    #     @author.orders_materials.build(:orders_id => material)
-    #   end
-    # end
-
+    puts order_params["materials"]
     if @order.save
+      @last = Order.last.id
+      # order_params["materials"].each do |m|
+      @OM = MaterialsOrder.new(:order_id => @last, :material_id => order_params["materials"], :cant => order_params["cant"])
+      @OM.save
+      # end
       redirect_to "/home"
     else
       flash[:danger] = "Solicitud invalida"
@@ -32,7 +26,7 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:fecha_entrega, :direccion, :estado,materials: :id)
+    params.require(:order).permit(:fecha_entrega, :direccion, :estado, :cant, :materials)
   end
 
 end

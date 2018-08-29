@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 2018_08_26_230631) do
     t.string "estado"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "bodega"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
