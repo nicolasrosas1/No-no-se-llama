@@ -1,4 +1,10 @@
 <% @page_title = "Listado materiales" %>
+
+<%= form_tag materials_path, :method => 'get' do %>
+  <%= text_field_tag :search, params[:search] %>
+  <%= submit_tag "Search" %>
+<% end %>
+
 <table class="table table-sm table-dark">
   <tr>
     <th style = "background-color:#87A0F5">Nombre</th>

@@ -25,4 +25,8 @@ class MaterialsController < ApplicationController
     params.require(:material).permit(:nombre, :precio, :stock, :bodega)
   end
 
+  def search_params
+
+  end
+
 end
