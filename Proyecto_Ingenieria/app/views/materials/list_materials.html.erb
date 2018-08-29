@@ -1,9 +1,19 @@
 <% @page_title = "Listado materiales" %>
 
-<%= form_tag materials_path, :method => 'get' do %>
-  <%= text_field_tag :search, params[:search] %>
-  <%= submit_tag "Search" %>
-<% end %>
+<div class= "row">
+  <div class="col-sm-6">
+    <%= form_tag "list_materials", :method => 'get' do %>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "Buscar" %>
+    <% end %>
+  </div>
+
+  <div class="col-sm-6">
+    <% if @prev_view != "new_material" %>
+      <%= link_to "Agregar nuevo material", "/new_material"%>
+    <% end %>
+  </div>
+</div>
 
 <table class="table table-sm table-dark">
   <tr>
@@ -18,6 +28,7 @@
     <th><%= Warehouse.find_by(id: m.bodega).nombre%></th>
   </tr>
   <% end %>
+
 
   <% if @prev_view == "new_material" %>
     <%= link_to "Volver", "/new_material"%>

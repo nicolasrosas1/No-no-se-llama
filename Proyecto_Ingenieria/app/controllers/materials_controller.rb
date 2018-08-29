@@ -11,7 +11,7 @@ class MaterialsController < ApplicationController
     @material = Material.new(material_params)
     if @material.save
       flash[:success] = "Material registrado"
-      @lista_materiales = Material.all
+      @lista_materiales = Material.where(["nombre LIKE ?", "%#{params[:search]}%"])
       @MW = MaterialsWarehouse.new(:warehouse_id => material_params["bodega"], :material_id => Material.last.id)
       @prev_view = "new_material"   #esto acabo de arreglar
       render "list_materials"
@@ -25,8 +25,5 @@ class MaterialsController < ApplicationController
     params.require(:material).permit(:nombre, :precio, :stock, :bodega)
   end
 
-  def search_params
-
-  end
 
 end
