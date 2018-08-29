@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :materials
 
   get '/new_order', to:'orders#new'
+  get '/list_orders', to:'orders#list_orders'
   post '/add_material', to: 'orders#add_material'
   resources :orders
 
