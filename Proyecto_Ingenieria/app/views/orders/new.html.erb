@@ -3,11 +3,7 @@
   <h1>Registrar solicitud de materiales</h1>
   <%= form_for(:order, :url => {:controller => 'orders', :action => 'create'}) do |f| %>
     <p> Fecha de entrega:</br> <%= f.date_field :fecha_entrega%>
-    <!-- <p> Direccion entrega:</br> <%= f.select :direccion, options_for_select([
-  ["Obras", ""],
-  ["Obra 1", "direccion 1"],
-  ["Obra 2", "direccion 2"],
-  ["Obra 3", "direccion 3"]]) %> -->
+    <p> Bodega 
     <p> Materiales:</br><%= f.collection_select(:materials, Material.all, :id, :nombre, {include_blank: false, include_hidden: false}, {multiple: false, include_hidden: false}) %>
     <p> Cantidad de materiales </br> <%= f.number_field :cant%>
 
