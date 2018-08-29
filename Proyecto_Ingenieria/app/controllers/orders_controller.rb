@@ -26,7 +26,7 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:fecha_entrega, :direccion, :estado, :cant, :materials)
+    params.require(:order).permit(:fecha_entrega, :direccion, :estado, :cant, :materials, :bodega)
   end
 
 end

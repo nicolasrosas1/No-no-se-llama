@@ -2,9 +2,17 @@
 <div  style= "margin: auto; width: 50%; padding: 10px; text-align: center">
   <h1>Registrar solicitud de materiales</h1>
   <%= form_for(:order, :url => {:controller => 'orders', :action => 'create'}) do |f| %>
-    <p> Fecha de entrega:</br> <%= f.date_field :fecha_entrega%>
-    <p> Bodega 
-    <p> Materiales:</br><%= f.collection_select(:materials, Material.all, :id, :nombre, {include_blank: false, include_hidden: false}, {multiple: false, include_hidden: false}) %>
+    <p> Fecha de entrega esperada:</br> <%= f.date_field :fecha_entrega%>
+    <p>
+      <label for="person_country_id">Bodega:</label></br>
+      <%= f.collection_select(:bodega, Warehouse.all, :id, :nombre, {include_blank: false, include_hidden: false}, {multiple: false, include_hidden: false}) %>
+    </p>
+    <p >
+      <label >Material:</label></br>
+      <%= f.collection_select(:materials, Material.all, :id, :nombre, {include_blank: false, include_hidden: false}, {multiple: false, include_hidden: false}) %>
+    </p>
+    <!-- <p> Bodega
+    <p> Materiales:</br><%= f.collection_select(:materials, Material.all, :id, :nombre, {include_blank: false, include_hidden: false}, {multiple: false, include_hidden: false}) %> -->
     <p> Cantidad de materiales </br> <%= f.number_field :cant%>
 
     <p><%= f.submit :Registrar %>
