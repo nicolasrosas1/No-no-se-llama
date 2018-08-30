@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
   include SessionsHelper
   include HomeHelper
 
-  before_action :logged_in_user, :iniciar
+  before_action :logged_in_user, :iniciar, :iniciar2
 
   def new
     @order = Order.new()
@@ -118,6 +118,10 @@ class OrdersController < ApplicationController
     end
   end
 
+  def getpresupuestos
+
+  end
+
   def order_params
     params.require(:order).permit(:fecha_entrega, :direccion, :estado, :cant, :materials, :bodega, :precio)
   end
@@ -125,7 +129,5 @@ class OrdersController < ApplicationController
   def update_params
     params.require(:order).permit(:estado)
   end
-
-
 
 end

@@ -24,5 +24,6 @@ Rails.application.routes.draw do
   post '/cotizar/:id', to:"orders#cotizar", as: :cotizar
   post '/form_presupuesto/:id', to: "orders#presupuestonew", as: :presupuestonew
   post '/presupuesto/:id', to: "orders#presupuesto", as: :presupuesto
+  get '/presupuestos', to: "orders#getpresupuestos"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

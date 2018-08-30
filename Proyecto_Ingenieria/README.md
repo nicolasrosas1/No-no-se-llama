@@ -2,7 +2,7 @@
 
 #### Tecnologias
 
-El proyecto es desarrollado utilizando Ruby on Rails, con una base de datos de MySQL
+El proyecto es desarrollado utilizando Ruby on Rails, con una base de datos de MySQL. Ademas se utilizo JSON-Server para simular el funcionamiento de LAUDUS
 
 #### Ejecucion de aplicacion web
 
@@ -12,6 +12,10 @@ Para ejecutar correctamente la aplicacion web, se deben ejecutar los siguientes 
 2. rake db:create
 3. rake db:migrate
 4. rails s
+
+Ademas, para poder simular LAUDUS, se debe ejecutar el siguiente comando en una linea de comandos adicional dentro de la carpeta "Proyecto Ingenieria/JSON Server", al mismo tiempo que se tiene el servidor del proyecto funcionando:
+
+1. json-server --watch db.json --port 3004
 
 #### Sign-up (localhost:3000/signup)
 
