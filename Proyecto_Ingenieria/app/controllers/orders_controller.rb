@@ -77,11 +77,17 @@ class OrdersController < ApplicationController
       res = http.request(req)
       puts "response #{res.body}"
       puts JSON.parse(res.body)
+      @order.estado = "En cotizacion"
+      @order.save
       flash[:success] = "Cotizacion de orden #{@order.id} enviada a Laudus* con exito."
       render "list_orders"
     rescue =>e
       puts "failed #{e}"
     end
+  end
+
+  def presupuestos
+    uri = URI('http://localhost:3004/orders/')
   end
 
 
