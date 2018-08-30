@@ -53,16 +53,6 @@ margin-left:auto;margin-right:auto;width:90%;"), "/list_materials" %>
 margin-left:auto;margin-right:auto;width:90%;"), "/new_material"%>
        <p>Agregar nuevo material
     </div>
-    <div class="col-xs-4">
-        <%= link_to image_tag("add_warehouse.png", style:"height:auto;display:block;
-margin-left:auto;margin-right:auto;width:90%;"), "/list_materials"%>
-       <p>Agregar nueva bodega
-    </div>
-    <div class="col-xs-4">
-        <%= link_to image_tag("warehouses.png", style:"height:auto;display:block;
-margin-left:auto;margin-right:auto;width:90%;"), "/list_materials"%>
-       <p>Ver bodegas
-    </div>
   </div>
     <%end%>
 
@@ -80,6 +70,16 @@ margin-left:auto;margin-right:auto;width:90%;"), "/list_materials"%>
         <p>Ver cotizaciones
         </div>
     </div>
+
+  <%end%>
+
+  <%if @current_user.cargo == 'Proveedor' %>
+  <div class="row text-center">
+      <div class="col-xs-4">
+        <%= link_to image_tag("orders.png", style:"height:auto;display:block;
+margin-left:auto;margin-right:auto;width:60%;"), "/list_orders" %>
+      <p>Ver ordenes
+      </div>
 
   <%end%>
 
