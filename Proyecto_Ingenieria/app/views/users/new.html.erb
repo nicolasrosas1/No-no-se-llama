@@ -8,7 +8,6 @@
     <p> Cargo:</br> <%= f.select :cargo, options_for_select([
   ["Cargos", ""],
   "Bodeguero",
-  "Bodeguero central",
   "Personal de obra",
   "Encargado de adquisiciones"]) %>
   <p> Bodega:</br><%= f.collection_select(:bodega, Warehouse.all, :id, :nombre, {include_blank: false, include_hidden: false}, {multiple: false, include_hidden: false}) %>
