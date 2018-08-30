@@ -12,11 +12,18 @@ Rails.application.routes.draw do
   resources :materials
 
   get '/new_order', to:'orders#new'
+  get '/list_orders', to:'orders#list_orders'
+  get '/orders/:id', to: 'orders#show', as: :orders_show
   post '/add_material', to: 'orders#add_material'
   resources :orders
 
   get '/new_warehouse', to:'warehouses#new'
   get '/list_warehouses', to:'warehouses#list_warehouses'
   resources :warehouses
+
+  post '/cotizar/:id', to:"orders#cotizar", as: :cotizar
+  post '/form_presupuesto/:id', to: "orders#presupuestonew", as: :presupuestonew
+  post '/presupuesto/:id', to: "orders#presupuesto", as: :presupuesto
+  get '/presupuestos', to: "orders#getpresupuestos"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

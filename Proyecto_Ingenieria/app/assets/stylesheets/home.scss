@@ -1,3 +1,21 @@
-// Place all the styles related to the home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+p.home{
+  color: #404040;
+  font-family:helvetica;
+  text-align: center;
+  font-size: 25px;
+}
+/* The heart of the matter */
+.options-group > .row {
+  overflow-x: auto;
+  white-space: nowrap;
+padding:25px;}
+.options-group > .row > .col-xs-4 {
+  display: inline-block;
+  float: none;
+}
+
+/* Decorations */
+.col-xs-4 { color: #fff; font-size: 20px; padding-bottom: 20px; padding-top: 18px; }
+.col-xs-4:nth-child(3n+1) { background: #69c; }
+.col-xs-4:nth-child(3n+2) { background: #9c6; }
+.col-xs-4:nth-child(3n+3) { background: #c69; }

@@ -1,34 +1,70 @@
-<div class="container">
+
   <div class= "row">
-    <p>Bienvenido! <%=session[:nombre]%>
+    <b><p class="home">Inicio de <%=session[:nombre]%></b>
   </div>
+
+<div class="container options-group">
   <%if @current_user.cargo == 'Personal de obra' %>
-    <%= link_to "Mandar solicitud", "/new_order" %>
-  <%end%>
-  <%if @current_user.cargo == 'Bodeguero' %>
-    <%= link_to "Registrar nuevo material", "/new_material" %>
-         <%= image_tag "ordenes.png" %>
-    <%= link_to "Ver materiales", "/list_materials" %>
-  <%end%>
-
-  <%if @current_user.cargo == 'Bodeguero central' %>
-
-  <div class="row">
-      <div class="col-sm-4">
-        <%= link_to "Ver órdenes", "/new_material" %>
-            <%= image_tag "ordenes.png", style: "height:auto;display:block;
-    margin-left:auto;margin-right:auto;width:90%;" %>
+    <div class="row text-center">
+      <div class="col-xs-4">
+        <%= link_to image_tag("add_order.png", style:"height:auto;display:block;
+margin-left:auto;margin-right:auto;width:80%;"), "/new_order" %>
+      <p>Solicitar materiales
       </div>
-      <div class="col-sm-4">
-        <%= link_to "Ver materiales", "/list_materials" %>
-            <%= image_tag "materiales.png", style: "height:auto;display:block;
-    margin-left:auto;margin-right:auto;width:90%;" %>
+      <div class="col-xs-4">
+        <%= link_to image_tag("orders.png", style:"height:auto;display:block;
+margin-left:auto;margin-right:auto;width:80%;"), "/list_orders" %>
+      <p>Ver ordenes
       </div>
-    <div class="col-sm-4">
-        <%= link_to "Registrar materiales", "/list_materials"%>
-            <%= image_tag "nuevo_material.png", style: "height:auto;display:block;
-    margin-left:auto;margin-right:auto;width:90%;" %>
-  </div>
+    </div>
     <%end%>
+
+    <%if @current_user.cargo == 'Bodeguero' %>
+      <div class="row text-center">
+        <div class="col-xs-4">
+          <%= link_to image_tag("add_material.png", style:"height:auto;display:block;
+  margin-left:auto;margin-right:auto;width:60%;"), "/new_material" %>
+        <p>Agregar nuevo material
+        </div>
+        <div class="col-xs-4">
+          <%= link_to image_tag("materials.png", style:"height:auto;display:block;
+  margin-left:auto;margin-right:auto;width:60%;"), "/list_materials" %>
+        <p>Ver materiales
+        </div>
+        <div class="col-xs-4">
+          <%= link_to image_tag("orders.png", style:"height:auto;display:block;
+  margin-left:auto;margin-right:auto;width:60%;"), "/list_orders" %>
+        <p>Ver ordenes
+        </div>
+    </div>
+  <%end%>
+
+
+  <%if @current_user.cargo == 'Encargado de adquisiciones' %>
+    <div class="row text-center">
+        <div class="col-xs-4">
+          <%= link_to image_tag("orders.png", style:"height:auto;display:block;
+  margin-left:auto;margin-right:auto;width:60%;"), "/list_orders" %>
+        <p>Ver ordenes
+        </div>
+
+        <div class="col-xs-4">
+          <%= link_to image_tag("cotizacion.png", style:"height:auto;display:block;
+  margin-left:auto;margin-right:auto;width:60%;"), "/presupuestos" %>
+        <p>Ver cotizaciones
+        </div>
+    </div>
+
+  <%end%>
+
+  <%if @current_user.cargo == 'Proveedor' %>
+  <div class="row text-center">
+      <div class="col-xs-4">
+        <%= link_to image_tag("orders.png", style:"height:auto;display:block;
+margin-left:auto;margin-right:auto;width:60%;"), "/list_orders" %>
+      <p>Ver ordenes
+      </div>
+
+  <%end%>
 
 </div>

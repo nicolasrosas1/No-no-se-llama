@@ -3,7 +3,8 @@
   <h1>Registra material</h1>
   <%= form_for(:material, :url => {:controller => 'materials', :action => 'create'}) do |f| %>
     <p> Nombre:</br> <%= f.text_field :nombre%> </p>
-    <p> Bodega:</br> <%= f.text_field :bodega%> </p>
+    <label for="person_country_id">Bodega:</label></br>
+    <%= f.collection_select(:bodega, Warehouse.all, :id, :nombre, {include_blank: false, include_hidden: false}, {multiple: false, include_hidden: false}) %>
     <p> Precio:</br> <%= f.number_field :precio%> </p>
     <p> Stock:</br> <%= f. number_field :stock%></p>
     <%= f.submit :Registrar %>

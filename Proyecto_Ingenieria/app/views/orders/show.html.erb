@@ -1,0 +1,44 @@
+<div class="container">
+     <div class="row">
+         <div class="col-md-6  offset-md-0  toppad" >
+             <div class="card">
+                 <div class="card-body">
+                     <h2 class="card-title">Modificar orden</h2>
+                     <table class="table table-user-information ">
+                       <%= form_for @order, :method => :PUT do |f| %>
+                         <tbody>
+
+                             <tr>
+                               <td>Material Solicitado:</td>
+                               <td><%=@mat.nombre%></td>
+                             </tr>
+
+                            <tr>
+                              <td>Cantidad solicitada:</td>
+                              <td><%=@MO.cant%></td>
+                            </tr>
+
+                            <tr>
+                              <td>Stock disponible</td>
+                              <td><%=@mat.stock%></td>
+                            </tr>
+                            <tr>
+                             <td>Estado:</td>
+                             <td><%= f.select :estado, options_for_select([
+                           ["Estados", ""],
+                           "Pendiente",
+                           "Falta Material",
+                           "En cotizacion",
+                           "Cotizado",
+                           "En despacho",
+                           "Recibido"
+                           ]) %></td>
+                            </tr>
+                         </tbody>
+                     </table>
+                     <%= f.submit "Guardar cambios" %>
+                   <% end %>
+             </div>
+         </div>
+     </div>
+ </div>

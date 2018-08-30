@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   validates :nombre, presence: true, length:  { :in => 3..20 }
   validates :apellido, presence: true, length:  { :in => 3..20 }
   validates :cargo, presence: true
+  validates :bodega, presence: true
   validates :correo, presence: true, uniqueness: true, format: EMAIL_REGEX
   validates :pass, :confirmation => true #password_confirmation attr
   validates_length_of :pass, :in => 6..20, :on => :create

@@ -1,4 +1,20 @@
 <% @page_title = "Listado materiales" %>
+
+<div class= "row">
+  <div class="col-sm-6">
+    <%= form_tag "list_materials", :method => 'get' do %>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "Buscar" %>
+    <% end %>
+  </div>
+
+  <div class="col-sm-6">
+    <% if @prev_view != "new_material" %>
+      <%= link_to "Agregar nuevo material", "/new_material"%>
+    <% end %>
+  </div>
+</div>
+
 <table class="table table-sm table-dark">
   <tr>
     <th style = "background-color:#87A0F5">Nombre</th>
@@ -9,9 +25,10 @@
   <tr>
     <th><%= m.nombre %></th>
     <th><%= m.stock %></th>
-    <th><%= m.bodega %></th>
+    <th><%= Warehouse.find_by(id: m.bodega).nombre%></th>
   </tr>
   <% end %>
+
 
   <% if @prev_view == "new_material" %>
     <%= link_to "Volver", "/new_material"%>
