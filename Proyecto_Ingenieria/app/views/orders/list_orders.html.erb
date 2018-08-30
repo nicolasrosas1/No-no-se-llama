@@ -1,26 +1,56 @@
 <% @page_title = "Listado Ordenes" %>
-<table class="table table-sm table-dark">
-  <tr>
-    <th style = "background-color:#87A0F5">Material</th>
-    <th style = "background-color: #87A0F5">Cantidad</th>
-    <th style = "background-color: #87A0F5">Bodega</th>
-    <th style = "background-color: #87A0F5">Estado</th>
-    <th style = "background-color: #87A0F5">Fecha ideal de entrega</th>
-    <th style = "background-color: #87A0F5"> Editar</th>
-  </tr>
-  <% Order.all.each do |m| %>
-  <tr>
-    <th><%= Material.find_by(id: MaterialsOrder.find_by(order_id: m.id).material_id).nombre %></th>
-    <th><%= MaterialsOrder.find_by(order_id: m.id).cant %></th>
-    <th><%= Warehouse.find_by(id: Material.find_by(id: MaterialsOrder.find_by(order_id: m.id).material_id).bodega).nombre%></th>
-    <th><%= m.estado%></th>
-    <th><%= m.fecha_entrega%></th>
-    <%= form_for m do |f| %>
-    <th><%=f.submit :Detalles %></th>
-    <%end%>
-  </tr>
-  <% end %>
+<%if (session[:cargo] == "Bodeguero") || (session[:cargo] == "Bodeguero central")%>
+  <table class="table table-sm table-dark">
+    <tr>
+      <th style = "background-color:#87A0F5">Material</th>
+      <th style = "background-color: #87A0F5">Cantidad</th>
+      <th style = "background-color: #87A0F5">Bodega</th>
+      <th style = "background-color: #87A0F5">Estado</th>
+      <th style = "background-color: #87A0F5">Fecha ideal de entrega</th>
+      <th style = "background-color: #87A0F5"> Editar</th>
+    </tr>
+    <% Order.all.each do |m| %>
+    <tr>
+      <th><%= Material.find_by(id: MaterialsOrder.find_by(order_id: m.id).material_id).nombre %></th>
+      <th><%= MaterialsOrder.find_by(order_id: m.id).cant %></th>
+      <th><%= Warehouse.find_by(id: Material.find_by(id: MaterialsOrder.find_by(order_id: m.id).material_id).bodega).nombre%></th>
+      <th><%= m.estado%></th>
+      <th><%= m.fecha_entrega%></th>
+      <%= form_for m,  {method: :get} do |f| %>
+      <th><%=f.submit :Modificar %></th>
+      <%end%>
+    </tr>
+    <% end %>
 
-  <% if @prev_view == "new_material" %>
-    <%= link_to "Volver", "/new_material"%>
-  <% end %>
+    <% if @prev_view == "new_material" %>
+      <%= link_to "Volver", "/new_material"%>
+    <% end %>
+<%end%>
+
+<%if session[:cargo] == "Encargado de adquisiciones"%>
+  <table class="table table-sm table-dark">
+    <tr>
+      <th style = "background-color:#87A0F5">Material</th>
+      <th style = "background-color: #87A0F5">Cantidad</th>
+      <th style = "background-color: #87A0F5">Bodega</th>
+      <th style = "background-color: #87A0F5">Estado</th>
+      <th style = "background-color: #87A0F5">Fecha ideal de entrega</th>
+      <th style = "background-color: #87A0F5"> Editar</th>
+    </tr>
+    <% Order.where(:estado => "Falta Material").each do |m| %>
+    <tr>
+      <th><%= Material.find_by(id: MaterialsOrder.find_by(order_id: m.id).material_id).nombre %></th>
+      <th><%= MaterialsOrder.find_by(order_id: m.id).cant %></th>
+      <th><%= Warehouse.find_by(id: Material.find_by(id: MaterialsOrder.find_by(order_id: m.id).material_id).bodega).nombre%></th>
+      <th><%= m.estado%></th>
+      <th><%= m.fecha_entrega%></th>
+      <%= form_for(m, {url: cotizar_path(m), method: :POST})  do |f| %>
+      <th><%=f.submit :Cotizar %></th>
+      <%end%>
+    </tr>
+    <% end %>
+
+    <% if @prev_view == "new_material" %>
+      <%= link_to "Volver", "/new_material"%>
+    <% end %>
+<%end%>

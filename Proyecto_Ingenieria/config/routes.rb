@@ -20,5 +20,8 @@ Rails.application.routes.draw do
   get '/new_warehouse', to:'warehouses#new'
   get '/list_warehouses', to:'warehouses#list_warehouses'
   resources :warehouses
+
+  post '/cotizar/:id', to:"orders#cotizar", as: :cotizar
+  get '/presupuestos', to: "orders#presupuesto"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

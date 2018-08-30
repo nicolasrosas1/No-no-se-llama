@@ -1,16 +1,29 @@
 {
-  "orders": [
+  "orders": [],
+  "cotizaciones": [
     {
-      "id": 0,
-      "name": "Hola"
+      "id_orden": 2,
+      "material": "martillo",
+      "cantidad": 5,
+      "id": 6
     },
     {
-      "name": "holaaa",
-      "id": 1
+      "id_orden": 2,
+      "material": "martillo",
+      "cantidad": 5,
+      "id": 7
     },
     {
-      "name": "holaaa",
-      "id": 2
+      "id_orden": 2,
+      "material": "martillo",
+      "cantidad": 5,
+      "id": 8
+    },
+    {
+      "id_orden": 2,
+      "material": "martillo",
+      "cantidad": 5,
+      "id": 9
     }
   ]
 }
