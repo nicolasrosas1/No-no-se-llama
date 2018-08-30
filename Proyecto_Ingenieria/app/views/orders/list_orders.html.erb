@@ -18,7 +18,7 @@
       <th><%= Warehouse.find_by(id: Material.find_by(id: MaterialsOrder.find_by(order_id: m.id).material_id).bodega).nombre%></th>
       <th><%= m.estado%></th>
       <th><%= m.fecha_entrega%></th>
-      <%= form_for m,  {method: :get} do |f| %>
+      <%= form_for(m,  {url: orders_show_path(m.id), method: :GET}) do |f| %>
       <th><%=f.submit :Modificar %></th>
       <%end%>
     </tr>
