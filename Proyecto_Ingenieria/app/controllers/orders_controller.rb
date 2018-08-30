@@ -2,7 +2,9 @@ class OrdersController < ApplicationController
   require "json"
   require "net/http"
   include SessionsHelper
-  before_action :logged_in_user
+  include HomeHelper
+
+  before_action :logged_in_user, :iniciar
 
   def new
     @order = Order.new()
@@ -63,19 +65,17 @@ class OrdersController < ApplicationController
     @order = Order.find_by(id: params[:id])
     @MO = MaterialsOrder.find_by(order_id: @order.id)
     @mat = Material.find_by(id: MaterialsOrder.find_by(order_id: @order.id).material_id)
-    @cot = {"id_orden" => @order.id, "material" => @mat.nombre, "cantidad" => @MO.cant}
-    @cot2 = [["id_orden", @order.id], ["material", @mat.nombre], ["cantidad", @MO.cant]]
-    puts @cot
+    @cot = {"id_orden" => @order.id, "material" => @mat.id, "cantidad" => @MO.cant}
     begin
       uri = URI("http://localhost:3004/cotizaciones")
       http = Net::HTTP.new(uri.hostname, uri.port)
-      uri_query = URI.encode_www_form(@cot2)
       req = Net::HTTP::Post.new(uri.path, init_header = {'Content-Type' =>'application/json',
             'Authorization' => 'XXXXXXXXXXXXXXXX'})
+      puts "res"
       req.body = @cot.to_json
       puts req.body
+
       res = http.request(req)
-      puts "response #{res.body}"
       puts JSON.parse(res.body)
       @order.estado = "En cotizacion"
       @order.save
@@ -86,13 +86,40 @@ class OrdersController < ApplicationController
     end
   end
 
-  def presupuestos
-    uri = URI('http://localhost:3004/orders/')
+  def presupuestonew
+    @order = Order.find_by(id: params[:id])
+    @MO = MaterialsOrder.find_by(order_id: @order.id)
+    @mat = Material.find_by(id: MaterialsOrder.find_by(order_id: @order.id).material_id)
   end
 
+  def presupuesto
+    @order = Order.find_by(id: params[:id])
+    @order2 = Order.new(order_params)
+    @MO = MaterialsOrder.find_by(order_id: @order.id)
+    @mat = Material.find_by(id: MaterialsOrder.find_by(order_id: @order.id).material_id)
+    @cot = {"id_orden" => @order.id, "precio" => @order2.precio}
+    begin
+      uri = URI("http://localhost:3004/presupuestos")
+      http = Net::HTTP.new(uri.hostname, uri.port)
+      req = Net::HTTP::Post.new(uri.path, init_header = {'Content-Type' =>'application/json',
+            'Authorization' => 'XXXXXXXXXXXXXXXX'})
+      puts "res"
+      req.body = @cot.to_json
+      puts req.body
+
+      res = http.request(req)
+      puts JSON.parse(res.body)
+      @order.estado = "Cotizada"
+      @order.save
+      flash[:success] = "Presupuesto de orden #{@order.id} enviada a Laudus* con exito."
+      render "list_orders"
+    rescue =>e
+      puts "failed #{e}"
+    end
+  end
 
   def order_params
-    params.require(:order).permit(:fecha_entrega, :direccion, :estado, :cant, :materials, :bodega)
+    params.require(:order).permit(:fecha_entrega, :direccion, :estado, :cant, :materials, :bodega, :precio)
   end
 
   def update_params

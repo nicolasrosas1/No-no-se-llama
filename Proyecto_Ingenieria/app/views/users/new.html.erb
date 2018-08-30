@@ -10,7 +10,8 @@
   "Bodeguero",
   "Bodeguero central",
   "Personal de obra",
-  "Encargado de adquisiciones"]) %>
+  "Encargado de adquisiciones",
+  "Proveedor"]) %>
   <p> Bodega:</br><%= f.collection_select(:bodega, Warehouse.all, :id, :nombre, {include_blank: false, include_hidden: false}, {multiple: false, include_hidden: false}) %>
     <p> Contrasena:</br> <%= f.password_field :pass%></p>
     <p> Confirmar contrasena:</br> <%= f.password_field :pass_confirmation%> </p>

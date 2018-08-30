@@ -15,11 +15,11 @@ Para ejecutar correctamente la aplicacion web, se deben ejecutar los siguientes 
 
 #### Sign-up (localhost:3000/signup)
 
-* El nombre de usuario debe ser unico
+* El correo debe ser unico
 * La contrasena debe tener como minimo 6 caracteres
 * El correo debe tener el formato 'correo@dominio.com'
 
-Al realizar el sign-up se ingresa automaticamente a la platafroma con el usuario recien creado
+Al realizar el sign-up se ingresa automaticamente a la platafroma con el usuario recien creado y se muestra el perfil del usuario, donde puede modificar su nombre, apellido, como tambien puede ver su cargo.
 
 #### Login (localhost:3000/login)
 

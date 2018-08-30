@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   resources :warehouses
 
   post '/cotizar/:id', to:"orders#cotizar", as: :cotizar
-  get '/presupuestos', to: "orders#presupuesto"
+  post '/form_presupuesto/:id', to: "orders#presupuestonew", as: :presupuestonew
+  post '/presupuesto/:id', to: "orders#presupuesto", as: :presupuesto
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
