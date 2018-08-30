@@ -1,0 +1,29 @@
+<div class="container">
+     <div class="row">
+         <div class="col-md-6  offset-md-0  toppad" >
+             <div class="card">
+                 <div class="card-body">
+                     <h2 class="card-title">Perfil</h2>
+                     <table class="table table-user-information ">
+                       <%= form_for(:order, {url: presupuesto_path(@order.id), method: :POST}) do |f| %>
+                         <tbody>
+                             <tr>
+                                 <td>Nombre Material:</td>
+                                 <td><%=  @mat.nombre %> </td>
+                             </tr>
+                             <tr>
+                                 <td>Cantidad:</td>
+                                 <td><%= @MO.cant %> </td>
+                             </tr>
+                             <tr>
+                                 <td>Costo:</td>
+                                 <td><%= f.number_field :precio%></td>
+                             </tr>
+                         </tbody>
+                     </table>
+                     <%= f.submit "Enviar presupuesto" %>
+                   <% end %>
+             </div>
+         </div>
+     </div>
+ </div>

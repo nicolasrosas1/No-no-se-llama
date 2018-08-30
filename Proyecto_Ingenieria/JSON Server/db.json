@@ -2,34 +2,18 @@
   "orders": [],
   "cotizaciones": [
     {
-      "id_orden": 2,
-      "material": "martillo",
-      "cantidad": 5,
-      "id": 6
-    },
+      "id_orden": 1,
+      "material": 1,
+      "cantidad": 12,
+      "id": 1
+    }
+  ],
+  "presupuestos": [
+    
     {
-      "id_orden": 2,
-      "material": "martillo",
-      "cantidad": 5,
-      "id": 7
-    },
-    {
-      "id_orden": 2,
-      "material": "martillo",
-      "cantidad": 5,
-      "id": 8
-    },
-    {
-      "id_orden": 2,
-      "material": "martillo",
-      "cantidad": 5,
-      "id": 9
-    },
-    {
-      "id_orden": 2,
-      "material": "martillo",
-      "cantidad": 5,
-      "id": 10
+      "id_orden": 1,
+      "precio": "123",
+      "id": 3
     }
   ]
 }
